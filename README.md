@@ -1,12 +1,87 @@
-# React + Vite
+# EcoMart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EcoMart is a simple e-commerce web application built with React and Redux Toolkit. It fetches product data from the Dummy Products API and allows users to manage their shopping cart using Redux for global state management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Display products from Dummy Products API
+- View product details
+- Add products to cart
+- Remove products from cart
+- Global state management using Redux Toolkit
+- Responsive user interface
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Redux Toolkit
+- React Redux
+- React Router
+- JavaScript
+- CSS
+- Dummy Products API
+
+## Project Structure
+
+
+src/
+│── app/
+│ └── store.js
+│
+│── features/
+│ └── cart/
+│ └── cartSlice.js
+│
+│── components/
+│
+│── pages/
+│
+│── assets/
+│
+└── App.jsx
+
+
+## Redux Toolkit Concepts Used
+
+- configureStore
+- createSlice
+- Reducers
+- Actions
+- useSelector
+- useDispatch
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+
+Navigate to the project folder:
+
+cd ecomart
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+How It Works
+Products are fetched from the Dummy Products API.
+Users can browse available products.
+Clicking "Add to Cart" dispatches a Redux action.
+The cart state is updated inside the Redux store.
+Cart data is displayed using useSelector.
+Products can be removed from the cart using Redux actions.
+Learning Outcomes
+
+This project helped me understand:
+
+Global state management
+Redux Toolkit workflow
+Creating slices
+Dispatching actions
+Accessing state with useSelector
+Managing cart functionality using Redux Toolkit
