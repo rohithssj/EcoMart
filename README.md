@@ -68,20 +68,24 @@ npm install
 Start the development server:
 
 npm run dev
-How It Works
-Products are fetched from the Dummy Products API.
-Users can browse available products.
-Clicking "Add to Cart" dispatches a Redux action.
-The cart state is updated inside the Redux store.
-Cart data is displayed using useSelector.
-Products can be removed from the cart using Redux actions.
-Learning Outcomes
+```
+
+## How It Works
+- Products are fetched from the Dummy Products API.
+- Users can browse available products.
+- Clicking "Add to Cart" dispatches a Redux action.
+- The cart state is updated inside the Redux store.
+- Cart data is displayed using useSelector.
+- Products can be removed from the cart using Redux actions.
+
+
+## Learning Outcomes
 
 This project helped me understand:
 
-Global state management
-Redux Toolkit workflow
-Creating slices
-Dispatching actions
-Accessing state with useSelector
-Managing cart functionality using Redux Toolkit
+- Global state management
+- Redux Toolkit workflow
+- Creating slices
+- Dispatching actions
+- Accessing state with useSelector
+- Managing cart functionality using Redux Toolkit
