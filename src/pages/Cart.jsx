@@ -1,26 +1,37 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCart } from "../redux/cartSlice";
+import {
+  deleteCart,
+  increaseQty,
+  decreaseQty,
+} from "../redux/cartSlice";
 
 const Cart = () => {
+  const cartItems = useSelector((store) => store.cartStore.cart);
 
-  let cart = useSelector((store) => store.cartStore.cart)
-  let cartItems = cart.map((elem) => ({ ...elem, qty: 1 }))
-  let dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const removeItem = (item) => {
-    dispatch(deleteCart(item.id))
-  }
+  const removeItem = (id) => {
+    dispatch(deleteCart(id));
+  };
 
-  
+  const increase = (id) => {
+    dispatch(increaseQty(id));
+  };
 
+  const decrease = (id) => {
+    dispatch(decreaseQty(id));
+  };
 
-  console.log(cartItems)
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.qty,
     0
   );
-  // console.log(total)
+
+  const totalItems = cartItems.reduce(
+    (acc, item) => acc + item.qty,
+    0
+  );
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -30,7 +41,7 @@ const Cart = () => {
         <div className="lg:col-span-2 space-y-5">
 
           <h1 className="text-3xl font-bold">
-            Shopping Cart ({cartItems.length})
+            Shopping Cart ({totalItems})
           </h1>
 
           {cartItems.length === 0 ? (
@@ -49,6 +60,7 @@ const Cart = () => {
                 key={item.id}
                 className="bg-white rounded-2xl shadow p-5 flex gap-5"
               >
+
                 {/* Image */}
                 <div className="w-36 h-36 bg-gray-100 rounded-xl flex items-center justify-center">
                   <img
@@ -80,7 +92,10 @@ const Cart = () => {
                     {/* Quantity */}
                     <div className="flex items-center border rounded-lg overflow-hidden">
 
-                      <button className="px-4 py-2 hover:bg-gray-100">
+                      <button
+                        className="px-4 py-2 hover:bg-gray-100"
+                        onClick={() => decrease(item.id)}
+                      >
                         -
                       </button>
 
@@ -88,21 +103,26 @@ const Cart = () => {
                         {item.qty}
                       </span>
 
-                      <button className="px-4 py-2 hover:bg-gray-100">
+                      <button
+                        className="px-4 py-2 hover:bg-gray-100"
+                        onClick={() => increase(item.id)}
+                      >
                         +
                       </button>
 
                     </div>
 
-                    <button className="text-red-500 hover:text-red-600" onClick={() => {
-                      removeItem(item)
-                    }}>
+                    <button
+                      className="text-red-500 hover:text-red-600"
+                      onClick={() => removeItem(item.id)}
+                    >
                       Remove
                     </button>
 
                   </div>
 
                 </div>
+
               </div>
             ))
           )}
@@ -110,7 +130,6 @@ const Cart = () => {
         </div>
 
         {/* Summary */}
-
         <div className="bg-white rounded-2xl shadow p-6 h-fit sticky top-8">
 
           <h2 className="text-2xl font-bold mb-6">
@@ -121,7 +140,7 @@ const Cart = () => {
 
             <div className="flex justify-between">
               <span>Total Items</span>
-              <span>{cartItems.length}</span>
+              <span>{totalItems}</span>
             </div>
 
             <div className="flex justify-between">
